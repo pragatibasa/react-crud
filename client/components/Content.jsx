@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import DeleteUser from './DeleteUser.jsx';
 import {Link} from 'react-router-dom';
 
 export class Content extends React.Component {
@@ -11,7 +10,20 @@ export class Content extends React.Component {
         }
     }
     
+    handleDelete(id,event) {
+        axios.delete('http://localhost:1337/user/'+id)
+        .then(res => {
+            if( res.status == 200 && res.statusText == 'OK' ) {
+                this.getUsersList();
+            }
+        });
+    }
+
     componentDidMount() {
+        this.getUsersList();    
+    }
+
+    getUsersList() {
         axios.get('http://localhost:1337/user', {
             headers: {'Access-Control-Allow-Origin': 'http://localhost:1337/user', 'Content-Type': 'application/json'}
         })
@@ -50,7 +62,7 @@ export class Content extends React.Component {
                             pathname: '/adduser',
                             state: { user: user }
                           }}><span class="oi oi-pencil mr-2"></span></Link>
-                        <span class="oi oi-trash"></span>
+                        <span class="oi oi-trash" onClick={this.handleDelete.bind(this,user.id)}></span>
                     </td>
                 </tr>
               )}
