@@ -11,7 +11,7 @@ export class Content extends React.Component {
     }
     
     handleDelete(id,event) {
-        axios.delete('http://localhost:1337/user/'+id)
+        axios.delete('http://localhost:1337/user/deleteUser/'+id)
         .then(res => {
             if( res.status == 200 && res.statusText == 'OK' ) {
                 this.getUsersList();

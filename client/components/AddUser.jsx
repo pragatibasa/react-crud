@@ -22,7 +22,7 @@ export default class AddUser extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.target);
-        axios.post('http://localhost:1337/user/'+this.state.id, data)
+        axios.post('http://localhost:1337/user/addOrUpdateUser/'+this.state.id, data)
         .then(res => {
             if( ( res.status == 201 || res.status == 200 ) && ( res.statusText == 'Created' || res.statusText == 'OK' ) ) {
                 this.props.history.push('/home');
