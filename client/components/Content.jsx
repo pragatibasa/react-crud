@@ -24,8 +24,8 @@ export class Content extends React.Component {
     }
 
     getUsersList() {
-        axios.get('http://localhost:1337/user', {
-            headers: {'Access-Control-Allow-Origin': 'http://localhost:1337/user', 'Content-Type': 'application/json'}
+        axios.get('http://localhost:1337/home/getAllUsers', {
+            headers: {'Access-Control-Allow-Origin': 'http://localhost:1337/home/getAllUsers', 'Content-Type': 'application/json'}
         })
         .then((res) => {
             return res;
@@ -43,8 +43,8 @@ export class Content extends React.Component {
               <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
                     <th scope="col">City</th>
                     <th>Actions</th>
                 </tr>
